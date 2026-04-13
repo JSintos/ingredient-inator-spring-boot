@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS recipe
     steps            LONGTEXT        NOT NULL,
     photo_link       VARCHAR(255),
     video_link       VARCHAR(255)
-    );
+);
