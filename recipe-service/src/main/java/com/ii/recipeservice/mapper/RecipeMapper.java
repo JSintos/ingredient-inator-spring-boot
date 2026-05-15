@@ -1,7 +1,10 @@
 package com.ii.recipeservice.mapper;
 
+import com.ii.recipeservice.dto.RecipeRequestDTO;
 import com.ii.recipeservice.dto.RecipeResponseDTO;
 import com.ii.recipeservice.model.Recipe;
+
+import java.time.LocalDate;
 
 public class RecipeMapper {
     public static RecipeResponseDTO toDto(Recipe recipe) {
@@ -29,5 +32,18 @@ public class RecipeMapper {
         }
 
         return recipeResponseDTO;
+    }
+
+    public static Recipe toModel(RecipeRequestDTO recipeRequestDTO) {
+        Recipe recipe = new Recipe();
+
+        recipe.setName(recipeRequestDTO.getName());
+        recipe.setAuthor(recipeRequestDTO.getAuthor());
+        recipe.setDateCreated(LocalDate.now());
+        recipe.setServingSize(recipeRequestDTO.getServingSize());
+        recipe.setIngredientList(recipeRequestDTO.getIngredientList());
+        recipe.setSteps(recipeRequestDTO.getSteps());
+
+        return recipe;
     }
 }

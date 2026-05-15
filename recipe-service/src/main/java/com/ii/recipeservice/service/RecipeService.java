@@ -1,5 +1,6 @@
 package com.ii.recipeservice.service;
 
+import com.ii.recipeservice.dto.RecipeRequestDTO;
 import com.ii.recipeservice.dto.RecipeResponseDTO;
 import com.ii.recipeservice.mapper.RecipeMapper;
 import com.ii.recipeservice.model.Recipe;
@@ -20,5 +21,11 @@ public class RecipeService {
         List<Recipe> recipes = recipeRepository.findAll();
 
         return recipes.stream().map(recipe -> RecipeMapper.toDto(recipe)).toList();
+    }
+
+    public RecipeResponseDTO createRecipe(RecipeRequestDTO recipeRequestDTO) {
+        Recipe createdRecipe = recipeRepository.save(RecipeMapper.toModel(recipeRequestDTO));
+
+        return RecipeMapper.toDto(createdRecipe);
     }
 }
